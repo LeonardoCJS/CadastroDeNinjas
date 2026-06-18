@@ -1,12 +1,15 @@
-package dev.java10x.CadastroDeNinjas;
+package dev.java10x.CadastroDeNinjas.Ninjas.Model;
 
+import dev.java10x.CadastroDeNinjas.Missoes.Model.Missao;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 // Entity ele transforma uma classe em entidade do BD
 // JPA = Java Persistence API
 @Entity
-@Table(name = "tb_cadastro_ninja")
-public class NinjaModel {
+@Table(name = "ninja")
+public class Ninja {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -14,20 +17,20 @@ public class NinjaModel {
     private String email;
     private int idade;
 
-    public NinjaModel(String nome, String email, int idade) {
+    public Ninja(String nome, String email, int idade) {
         this.nome = nome;
         this.email = email;
         this.idade = idade;
     }
 
-    public NinjaModel() {
+    public Ninja() {
     }
 
     public Long getId() {
         return id;
     }
 
-    public NinjaModel setId(Long id) {
+    public Ninja setId(Long id) {
         this.id = id;
         return this;
     }
@@ -36,7 +39,7 @@ public class NinjaModel {
         return nome;
     }
 
-    public NinjaModel setNome(String nome) {
+    public Ninja setNome(String nome) {
         this.nome = nome;
         return this;
     }
@@ -45,7 +48,7 @@ public class NinjaModel {
         return email;
     }
 
-    public NinjaModel setEmail(String email) {
+    public Ninja setEmail(String email) {
         this.email = email;
         return this;
     }
@@ -54,8 +57,13 @@ public class NinjaModel {
         return idade;
     }
 
-    public NinjaModel setIdade(int idade) {
+    public Ninja setIdade(int idade) {
         this.idade = idade;
         return this;
     }
+
+    // @ManyToOne - um ninja tem uma unica missao
+    @ManyToOne
+    @JoinColumn(name = "missao_id") // Forain Key ou chave estrangeira
+    private Missao missao;
 }
