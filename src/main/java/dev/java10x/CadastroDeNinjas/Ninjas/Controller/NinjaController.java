@@ -4,7 +4,7 @@ import dev.java10x.CadastroDeNinjas.Ninjas.Model.Ninja;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping
+@RequestMapping("/ninja")
 public class NinjaController {
 
     @GetMapping("/boasvindas")
@@ -15,7 +15,7 @@ public class NinjaController {
     // Adicinar ninja (CREATE)
     @PostMapping("/create")
     public String createNinja() {
-        return "Ninja foi criada com sucesso";
+        return "Ninja foi criado com sucesso";
     }
 
     // Mostrar todos os ninjas (READ)
