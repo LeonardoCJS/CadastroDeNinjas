@@ -32,9 +32,9 @@ public class NinjaController {
     }
 
     // Procurar ninja por Id (READ)
-    @GetMapping("/findbyID")
-    public String findByIdNinja(@RequestParam int id) {
-        return "Mostrar ninja por ID";
+    @GetMapping("/findbyID/{id}")
+    public Ninja findByIdNinja(@PathVariable long id) {
+        return ninjaService.findNinjaById(id);
     }
 
     // Alterar dados dos ninjas (UPDATE)
