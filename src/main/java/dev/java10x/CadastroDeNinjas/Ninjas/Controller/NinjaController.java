@@ -20,21 +20,21 @@ public class NinjaController {
     }
 
     // Adicinar ninja (CREATE)
-    @PostMapping("/create")
-    public String createNinja() {
-        return "Ninja foi criado com sucesso";
+    @PostMapping("/save")
+    public Ninja save(@RequestBody Ninja ninja) {
+        return ninjaService.save(ninja);
     }
 
     // Mostrar todos os ninjas (READ)
-    @GetMapping("/all")
-    public List<Ninja> allNinjas() {
+    @GetMapping("/findall")
+    public List<Ninja> findAll() {
         return ninjaService.findAll();
     }
 
     // Procurar ninja por Id (READ)
     @GetMapping("/findbyID/{id}")
-    public Ninja findByIdNinja(@PathVariable long id) {
-        return ninjaService.findNinjaById(id);
+    public Ninja findById(@PathVariable long id) {
+        return ninjaService.findById(id);
     }
 
     // Alterar dados dos ninjas (UPDATE)
