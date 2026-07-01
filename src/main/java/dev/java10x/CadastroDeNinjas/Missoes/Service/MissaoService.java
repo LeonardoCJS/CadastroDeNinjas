@@ -1,4 +1,4 @@
 package dev.java10x.CadastroDeNinjas.Missoes.Service;
 
-public class NinjaService {
+public class MissaoService {
 }
