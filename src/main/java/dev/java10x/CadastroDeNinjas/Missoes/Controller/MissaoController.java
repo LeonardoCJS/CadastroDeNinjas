@@ -1,11 +1,21 @@
 package dev.java10x.CadastroDeNinjas.Missoes.Controller;
 
+import dev.java10x.CadastroDeNinjas.Missoes.Model.Missao;
+import dev.java10x.CadastroDeNinjas.Missoes.Repository.MissaoRepository;
+import dev.java10x.CadastroDeNinjas.Missoes.Service.MissaoService;
 import dev.java10x.CadastroDeNinjas.Ninjas.Model.Ninja;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/missao")
 public class MissaoController {
+
+    @Autowired
+    private MissaoService missaoService;
+
     // Adicinar missao (CREATE)
     @PostMapping("/create")
     public String createMissao() {
@@ -13,9 +23,9 @@ public class MissaoController {
     }
 
     // Mostrar todos os missoes (READ)
-    @GetMapping("/all")
-    public String allMissoes() {
-        return "Mostrar todos as missões";
+    @GetMapping("/findall")
+    public List<Missao> findAll() {
+        return missaoService.findAll();
     }
 
     // Procurar missao por Id (READ)
