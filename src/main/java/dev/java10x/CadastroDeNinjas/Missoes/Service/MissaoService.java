@@ -36,4 +36,12 @@ public class MissaoService {
     public void delete (long id) {
         missaoRepository.deleteById(id);
     }
+
+    public Missao update(long id, Missao missao) {
+        if (missaoRepository.existsById(id)) {
+            return missaoRepository.save(missao);
+        }else  {
+            return null;
+        }
+    }
 }

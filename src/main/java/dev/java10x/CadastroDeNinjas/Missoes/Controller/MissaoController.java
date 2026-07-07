@@ -30,19 +30,19 @@ public class MissaoController {
 
     // Procurar missao por Id (READ)
     @GetMapping("/findbyID/{id}")
-    public Missao findByIdMissao(@PathVariable long id) {
+    public Missao findById(@PathVariable long id) {
         return missaoService.findById(id);
     }
 
     // Alterar dados das missoes (UPDATE)
-    @PutMapping("/update")
-    public String updateMissoes(@RequestBody Ninja ninja) {
-        return "Missão foi atualizada com sucesso";
+    @PutMapping("/update/{id}")
+    public Missao update(@PathVariable long id, @RequestBody Missao missao) {
+        return missaoService.update(id, missao);
     }
 
     // Deletar missao (DELETE)
     @DeleteMapping("/delete/{id}")
-    public void deleteMissao(@PathVariable long id) {
+    public void delete(@PathVariable long id) {
         missaoService.delete(id);
     }
 }
