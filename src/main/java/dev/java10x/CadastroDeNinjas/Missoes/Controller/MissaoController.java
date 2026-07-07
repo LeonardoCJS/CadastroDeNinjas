@@ -17,9 +17,9 @@ public class MissaoController {
     private MissaoService missaoService;
 
     // Adicinar missao (CREATE)
-    @PostMapping("/save")
-    public Missao save(@RequestBody Missao missao) {
-        return missaoService.save(missao);
+    @PostMapping("/create")
+    public Missao create(@RequestBody Missao missao) {
+        return missaoService.create(missao);
     }
 
     // Mostrar todos os missoes (READ)

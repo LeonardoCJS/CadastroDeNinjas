@@ -28,7 +28,7 @@ public class MissaoService {
     }
 
     // Criar uma nova missao
-    public Missao save(Missao missao) {
+    public Missao create(Missao missao) {
         return missaoRepository.save(missao);
     }
 
