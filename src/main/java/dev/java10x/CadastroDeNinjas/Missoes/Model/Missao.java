@@ -17,8 +17,11 @@ import java.util.List;
 public class Missao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+    @Column(name = "nome")
     private String nome;
+    @Column(name = "dificuldade")
     private String dificuldade;
     // @OneToMany - uma missao tem varios ninjas
     @OneToMany(mappedBy = "missao")
