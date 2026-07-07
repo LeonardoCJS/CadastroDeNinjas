@@ -29,9 +29,9 @@ public class MissaoController {
     }
 
     // Procurar missao por Id (READ)
-    @GetMapping("/findbyID")
-    public String findByIdMissao(@RequestParam int id) {
-        return "Mostrar Missão por ID";
+    @GetMapping("/findbyID/{id}")
+    public Missao findByIdMissao(@PathVariable long id) {
+        return missaoService.findById(id);
     }
 
     // Alterar dados das missoes (UPDATE)
