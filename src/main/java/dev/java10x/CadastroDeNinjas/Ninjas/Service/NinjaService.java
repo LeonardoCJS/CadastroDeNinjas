@@ -1,5 +1,7 @@
 package dev.java10x.CadastroDeNinjas.Ninjas.Service;
 
+import dev.java10x.CadastroDeNinjas.Ninjas.DTO.NinjaDTO;
+import dev.java10x.CadastroDeNinjas.Ninjas.Mapper.NinjaMapper;
 import dev.java10x.CadastroDeNinjas.Ninjas.Model.Ninja;
 import dev.java10x.CadastroDeNinjas.Ninjas.Repository.NinjaRepository;
 import org.springframework.stereotype.Service;
@@ -11,9 +13,11 @@ import java.util.Optional;
 public class NinjaService {
 
     private NinjaRepository ninjaRepository;
+    private NinjaMapper ninjaMapper;
 
-    public NinjaService(NinjaRepository ninjaRepository) {
+    public NinjaService(NinjaRepository ninjaRepository,  NinjaMapper ninjaMapper) {
         this.ninjaRepository = ninjaRepository;
+        this.ninjaMapper = ninjaMapper;
     }
 
     // Listar todos os meus ninjas
@@ -28,8 +32,10 @@ public class NinjaService {
     }
 
     // Criar um novo ninja
-    public Ninja create(Ninja ninja) {
-        return ninjaRepository.save(ninja);
+    public NinjaDTO create(NinjaDTO ninjaDTO) {
+        Ninja ninja = ninjaMapper.map(ninjaDTO);
+        ninja = ninjaRepository.save(ninja);
+        return ninjaMapper.map(ninja);
     }
 
     // Deletar ninja - Tem que ser um metodo void
@@ -38,9 +44,11 @@ public class NinjaService {
     }
 
     // Atualizar ninja
-    public Ninja updade(long id, Ninja ninja) {
+    public NinjaDTO updade(long id, NinjaDTO ninjaDTO) {
         if (ninjaRepository.existsById(id)) {
-            return ninjaRepository.save(ninja);
+            Ninja ninja = ninjaMapper.map(ninjaDTO);
+            ninja = ninjaRepository.save(ninja);
+            return ninjaMapper.map(ninja);
         }else {
             return null;
         }
