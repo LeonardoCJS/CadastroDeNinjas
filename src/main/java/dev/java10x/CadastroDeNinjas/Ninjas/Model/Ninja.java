@@ -24,6 +24,8 @@ public class Ninja {
     private String email;
     @Column(name = "img_url")
     private String imgUrl;
+    @Column(name = "rank")
+    private String rank;
     @Column(name = "idade")
     private int idade;
     // @ManyToOne - um ninja tem uma unica missao
