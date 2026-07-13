@@ -1,5 +1,6 @@
 package dev.java10x.CadastroDeNinjas.Missoes.Controller;
 
+import dev.java10x.CadastroDeNinjas.Missoes.DTO.MissaoDTO;
 import dev.java10x.CadastroDeNinjas.Missoes.Model.Missao;
 import dev.java10x.CadastroDeNinjas.Missoes.Repository.MissaoRepository;
 import dev.java10x.CadastroDeNinjas.Missoes.Service.MissaoService;
@@ -18,26 +19,26 @@ public class MissaoController {
 
     // Adicinar missao (CREATE)
     @PostMapping("/create")
-    public Missao create(@RequestBody Missao missao) {
-        return missaoService.create(missao);
+    public MissaoDTO create(@RequestBody MissaoDTO missaoDTO) {
+        return missaoService.create(missaoDTO);
     }
 
     // Mostrar todos os missoes (READ)
     @GetMapping("/findall")
-    public List<Missao> findAll() {
+    public List<MissaoDTO> findAll() {
         return missaoService.findAll();
     }
 
     // Procurar missao por Id (READ)
     @GetMapping("/findbyID/{id}")
-    public Missao findById(@PathVariable long id) {
+    public MissaoDTO findById(@PathVariable long id) {
         return missaoService.findById(id);
     }
 
     // Alterar dados das missoes (UPDATE)
     @PutMapping("/update/{id}")
-    public Missao update(@PathVariable long id, @RequestBody Missao missao) {
-        return missaoService.update(id, missao);
+    public MissaoDTO update(@PathVariable long id, @RequestBody MissaoDTO missaoDTO) {
+        return missaoService.update(id, missaoDTO);
     }
 
     // Deletar missao (DELETE)
